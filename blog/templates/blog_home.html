@@ -1,0 +1,133 @@
+{% extends 'blog_base.html' %}
+{% load static %}
+{% load tag %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+</head>
+<body>
+    {% block content %}
+    <!-- main blog page -->
+    <main class="blog-page" role="main">
+        <!-- intro -->
+    <section class="intro">
+        <h1 data-aos="fade-up" data-aos-delay="200">sewnet blog</h1>
+        <div class="section-wrapper" data-aos="fade-up">
+            <p>Welcome to the servers world network blog-page, for your authoritative, interesting and educative tech resources, always come here. You will get relevant information on updates, what is trending and how to learn basic tech skills including some programming languages, basic coding and any other thing of your choice.</p>
+        </div>
+    </section>
+        <!-- end of intro -->
+        <!-- blog content -->
+    <section class="blog-content">
+        <div class="section-wrapper">
+            <!-- recent -->
+            <div class="recent" data-aos="fade-up">
+                <h1 class="section-title" style="margin-bottom: 2rem;">recent <span>posts</span></h1>
+                {% for post in recent %}
+                <div class="recent-wrapper" data-aos="fade-up" data-aos-delay="200" tabindex="0">
+                    <div class="img-box">
+                        <img src="{{post.image.url}}" aria-label="blog image" alt="blog image">
+                    </div>
+                    <div class="content-box">
+                        <p class="date" aria-label="date {{post.created_on}}">{{post.created_on}}</p>
+                        <p class="title" aria-label="blog title">{{post.title|markdown|truncatewords_html:15}}</p>
+                        <p class="text">{{ post.text|markdown|truncatewords_html:20 }}</p>
+                        <a href="{{post.get_absolute_url}}" class="all-btns" target="_blank">
+                            read more</a>
+                    </div>
+                </div>
+                    {% endfor %}
+            </div>
+    <!-- end of recent -->
+    <!-- this div houses tags, most commented and most liked  -->
+        <div class="main-container">
+             <!-- categories(tags) -->
+             <div class="tags">
+                <h1 class="section-title" style="margin-bottom: 2rem;" data-aos="fade-up"><span>tags</span></h1>
+                <div class="tags-wrapper">
+                    {% for tag in tags %}
+                    <li class="tag-list" data-aos="fade-up" data-aos-delay="200">
+                        <a href="{% url 'post_list_by_tag' tag.slug %}" aria-label="{{ tag.name }} category">
+                            {{ tag.name }}
+                        </a>
+                    </li>
+                        {% endfor %}
+                </div>
+            </div>
+            <!-- end of categories (tags) -->
+            <!-- commented and liked post -->
+            <div class="comment-like-container">
+                <div class="most-like-wrapper">
+                    <h3 class="section-title small" style="margin-bottom: 2rem;" data-aos="fade-up">most  <span>liked</span> posts</h3>
+                    {% get_most_liked_posts as likes %}
+                    {% for like in likes %}
+                    <a href="{{like.get_absolute_url}}" class="most-like" aria-label="{{like.title}}" data-aos="fade-up" data-aos-delay="200">
+                        <div class="img-box">
+                            <img src="{{like.image.url}}">
+                        </div>
+                        <div class="content-box">
+                            <h2 class="title">{{like.title|markdown|truncatewords_html:8}}</h2>
+                            <p class="text">{{ like.text|markdown|truncatewords_html:8 }}</p>
+                        </div>
+                    </a>
+            
+                    {% endfor %}
+                </div>
+                <div class="most-comment-wrapper">
+                    <h3 class="section-title small" style="margin-bottom: 2rem;" data-aos="fade-up">most  <span>commented</span> posts</h3>
+                    {% get_most_commented_posts as comments %}
+                    {% for comment in comments %}
+                    <a href="{{comment.get_absolute_url}}" class="most-comment" aria-label="{{comment.title}}" data-aos="fade-up" data-aos-delay="200">
+                        <div class="img-box">
+                            <img src="{{comment.image.url}}">
+                        </div>
+                        <div class="content-box">
+                            <h2 class="title">{{comment.title|markdown|truncatewords_html:8}}</h2>
+                            <p class="text">{{ comment.text|markdown|truncatewords_html:8 }}</p>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- end of commented and liked post -->
+        </div>
+    <!-- end of this div houses tags, most commented and most liked  -->
+        </div>
+    </section>
+    <!-- end of blog content -->
+    </main>
+        <!-- subscribe form -->
+        <section class="subscribe">
+            <div class="section-wrapper">
+                <h4 data-aos="fade-left">Subscribe to get updates!</h4>
+                <div class="sub-form">
+                    <div class="input-box">
+                        <input type="email" placeholder="your email" data-aos="fade-left" id="email" required>
+                        <h4 style="font-size: 2rem;" id="validate-msg" role="alert"></h4>
+                    </div>
+                    <button id="subscribe" type="button" aria-label="subscribe button" class="sub-btn disable" data-aos="zoom-in">subscribe</button>
+                </div>
+            </div>
+        </section>
+        <!-- end of subscribe form -->
+        <!-- FAQ modal -->
+        <div class="faq-container">
+            <div class="faq-wrapper">
+                <button class="faq-close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="faq-content" role="alert">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt quas, laboriosam, iusto illum nobis ex mollitia, inventore aliquam debitis non deserunt veniam ut dolore hic vel similique laudantium natus in.
+                </div>
+            </div>
+        </div>
+        <!-- end of FAQ modal -->
+
+        
+    {% endblock %}
+</body>
+</html>

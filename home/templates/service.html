@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Services{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+    <section class="service">
+        <h1 class="section-title" data-aos="fade-up"><span>our</span> services</h1>
+        <div class="section-wrapper" data-aos="fade-up">
+            <h4>PRODUCTS AND SERVICES: </h4>
+            <p style="margin-bottom: 2rem;">
+                We offer all forms of digital solutions as a tech company; our team also update our products and services to suit our customers and the increasing demands on the market. SEWoNet team is committed tirelessly to providing timely, reliable, quality tech solutions for individuals, small businesses, and home office workers at competitively reasonable prices that will allow all individuals to desire the use of technology. Our products and services are classified in two; 
+                </p>
+                <h4>Long Term: </h4>
+            <p style="margin-bottom: 2rem;">
+                <ul style="list-style: disc;">
+                    <li>Traffic light technology </li>
+                    <li>Cloud computing </li>
+                    <li>Online library </li>
+                    <li>E-commerce </li>
+                    <li> Examination systems </li>
+                    <li>Voting platform </li>
+                </ul>
+            </p>
+            <h4>Short Term: </h4>
+            <p style="margin-bottom: 2rem;">
+                <ul style="list-style: disc;">
+                    <li>App development </li>
+                    <li>Software testing </li>
+                    <li>System maintenance</li>
+                    <li>Search Engine </li>
+                    <li> Website design </li>
+                </ul>
+            </p>
+        </div>
+    </section>
+    {% endblock %}
+</body>
+</html>

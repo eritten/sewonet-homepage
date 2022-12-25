@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+<head> 
+    
+    <title>{% block title %}Contact us{% endblock %}</title>
+</head>
+
+    {% block content %}
+     <!-- about section -->
+     <section class="contact">
+        <h1 class="section-title" data-aos="fade-up"><span>contact</span> us</h1>
+        <div class="section-wrapper">
+            <div class="contact-wrapper">
+                <div class="img-box" data-aos="fade-left">
+                    <img src="{% static 'img/contact.svg' %}" alt="contact us image">
+                </div>
+                <div class="contact-box" data-aos="fade-right">
+                    <form action="{% url 'contact' %}" method="post">
+{% csrf_token %}
+                        <input type="text" name="name" placeholder="full name" class="box" required>
+                        <input type="email" placeholder="your email" name="email" class="box" required>
+                        <input type="tel" name="telephone" placeholder="your number" class="box" required>
+                        <textarea name="message" placeholder="your message" class="box" id="" cols="30" rows="10" required></textarea>
+                        <input type="submit" value="send message" class="all-btns">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of about section -->
+    {% endblock %}

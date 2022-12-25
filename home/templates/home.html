@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body id="home-body">
+    {% block content %}
+    <main>
+        <!-- header -->
+        <header>
+            <div class="header-wrapper">
+                <div class="content-box" data-aos="fade-left">
+                    <h1>SEWNET</h1>
+                    <p>Servers World Network is a software engineering firm which sought to be the game changer in the tech eco system by providing affordable technological solutions to the many challenges of the world, and to connect people to opportunities by training young and quality talents to meet the growing demand in the tech space.</p>
+                    <a href="{% url 'about' %}" class="all-btns">read more</a>
+                </div>
+                <div class="img-box" data-aos="fade-right">
+                    <img src="{% static 'img/header.svg'%}" alt="">
+                </div>
+            </div>
+        </header>
+        <!-- end of header -->
+        <!-- SERVICES -->
+        <section class="services" id="services">
+            <h1 class="section-title" data-aos="fade-up">our <span>services</span></h1>
+            <div class="section-wrapper">
+                <div class="service-wrapper">
+                    <div class="content-box">
+                        <div class="img-box" data-aos="fade-up">
+                            <img src="{% static 'img/service.jpg'%}" alt="service image">
+                        </div>
+                        <h2 data-aos="fade-up">The services we provide</h2>
+                        <p>We offer all forms of digital solutions as a tech company; our team also update our products and services to suit our customers and the increasing demands on the market. SEWoNet team is committed tirelessly to providing timely, reliable, quality tech solutions for individuals, small businesses, and home office workers at competitively reasonable prices that will allow all individuals to desire the use of technology. Our products and services are classified in two; </p>
+
+                        <br>
+                        <a href="{% url 'services' %}" class="all-btns" >read more</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end of SERVICES -->
+        <!-- about section --> 
+        <section class="about-home">
+            <h1 class="section-title" data-aos="fade-up"><span>{% blocktranslate %}About{% endblocktranslate %}</span> us</h1>
+            <div class="section-wrapper">
+                <div class="about-home-wrapper" data-aos="fade-up">
+                    <div class="img-box" data-aos="fade-left">
+                        <img src="{% static 'img/about.jpg' %}" alt="About us image">
+                    </div>
+                    <div class="content-box" data-aos="fade-right">
+                        <h2 data-aos="fade-up">We create Amazing And User Friendly Websites</h2>
+                        <p>{% blocktranslate %}Solving the world's challenges by developing and improving quality tech solutions on the annual basis and making technological skills easy and affordable to acquire. {% endblocktranslate %}</p>
+                        <a href="{% url 'about' %}" class="all-btns">read more</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end of about section -->
+        <style>
+            /* contact message alert */
+            
+        #alert-msg {
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+            padding: 2rem;
+            position: fixed;
+            top: 5rem;
+            left: 50%;
+            min-width: 60%;
+            transform: translateX(-50%);
+            background-color: #fff;
+            z-index: 20000000;
+            border-radius: 6px;
+        }
+        #alert-msg .close-msg-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: none;
+            font-size: 2rem;
+            padding: 1rem;
+        }
+        /* end of contact message alert */
+          </style>
+          <!-- alert to display when contact message is sent -->
+          {% for message in messages %}
+          <div id="alert-msg" role="alert">
+            <strong style="color: rgb(58, 57, 56);">Your message has been sent</strong> 
+            <p class="mt-3 mr-2">{{message}}</p>
+            <p>We will reply you via your mail. </p>
+            <button type="button" class="close-msg-btn" aria-label="Close button">
+              <span class="fas fa-times" aria-hidden="true"></span>
+            </button>
+          </div>
+          {% endfor %}
+          <!-- end of alert when contact message is sent -->
+          <!-- script for the close button when contact message alert is displayed -->
+    <script>
+        const msgAlertBx = document.querySelector("#alert-msg")
+        const msgAlertCloseBtn = document.querySelector("#alert-msg .close-msg-btn")
+  
+        msgAlertCloseBtn.addEventListener("click", closeAlertBox)
+  
+        function closeAlertBox() {
+          msgAlertBx.style.display = "none"
+        }
+        // message should disappear after 6 secs
+        setTimeout(() => {
+          closeAlertBox()
+        }, 6000);
+      </script>
+    </main>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,160 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sewonet (Server's World Network) Is A Software Engineering Firm Which Sought To Be The Game Changer In The Tech Eco System By Providing Affordable Technological Solutions To The Many Challenges Of The World, And To Connect People To Opportunities By Training Young And Quality Talents To Meet The Growing Demand In The Tech Space.">
+    <title>sewonet {% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/all.js' %}"></script>
+</head>
+<body>
+    <style>
+        .blog-link {
+            background-color: var(--blue);
+            color: white;
+            border-radius: 30px;
+            padding: 1rem 2rem;
+            font-weight: bold;
+        }
+        .blog-link:hover,
+        .blog-link:focus {
+            color: white!important;
+        }
+        @media (max-width: 768px) {
+            .nav-wrapper .nav-list li:last-child {
+                margin-top: 2rem;
+
+            }
+        }
+    </style>
+    <!-- nav -->
+    <nav>
+        <div class="nav-wrapper">
+            <a href="{% url 'home' %}" class="logo-box" aria-label="Home link">
+                <img src="{% static 'img/logo.jpg' %}" alt="">
+            </a>
+            <ul class="nav-list">
+                <li class="nav-link">
+                    <a href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-link">
+                    <a href="{% url 'about' %}">About</a>
+                </li>
+                <li class="nav-link">
+                    <a href="{% url 'services' %}">services</a>
+                </li>
+                <li class="nav-link">
+                    <a href="{% url 'contact' %}">contact</a>
+                </li>
+                <li class="nav-link">
+                    <a href="#n" id="toggle-dark-mode">Dark mode</a>
+                </li>
+                <li class="nav-link">
+                    <a href="{% url 'blog_home' %}" class="blog-link" aria-label="sewonet blog">Blog</a>
+                </li>
+            </ul>
+            <button class="menu-btn" aria-label="navigation menu button">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    <!-- end of nav -->
+    {% block content %}
+
+    {% endblock %}
+<hr/>
+    <!-- footer -->
+    <footer>
+        <div class="footer-wrapper">
+            <ul class="quick-links">
+                <h3>Quick links</h3>
+                <li>
+                    <a href="{% url 'home' %}">Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'about' %}">About</a>
+                </li>
+                <li>
+                    <a href="{% url 'services' %}">Services</a>
+                </li>
+                <li>
+                    <a href="{% url 'contact' %}">Contact</a>
+                </li>
+                <li>
+                    <a href="{% url 'django.contrib.sitemaps.views.sitemap' %}">Sitemap</a>
+                </li>
+                <li>
+                    <a href="{% url 'privacy' %}">Privacy</a>
+                </li>
+            </ul>
+            <ul class="contact-us">
+                <h3>contact us</h3>
+                <li>+233245128243/+233559885933</li>
+                <li>info@sewonet.com</li>
+                <li>Legon, Accra, Ghana</li>
+            </ul>
+            <ul class="follow">
+                <h3>follow us</h3>
+                <li><a href="#">facebook</a></li>
+                <li><a href="#">twitter</a></li>
+                <li><a href="#">instagram</a></li>
+                <li><a href="#">youtube</a></li>
+            </ul>
+        </div>
+        <p>&#169 Swonet Company limited  | All Rights Reserved!</p>
+    </footer>
+     <!-- js links -->
+     <script src="{% static 'js/aos.js' %}"></script>
+     <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+     <script>
+        // aos initialisation
+        AOS.init({
+            offset: 100,
+            delay: 100,
+            duration: 700,
+            easing: 'ease',
+            once: false,
+            mirror: false,
+            anchorPlacement: 'top-bottom'
+        })
+        // light and dark mode
+        $(document).ready(()=>{
+            const body = document.querySelector("body")
+            const darkModeBtn = $("#toggle-dark-mode")
+            let darkMode = localStorage.getItem("dark-mode")
+
+            // enable dark mode function
+            function enableDarkMode() {
+                body.classList.add("dark-mode")
+                localStorage.setItem("dark-mode", "enabled")
+            }
+            // disable dark mode function
+            function disableDarkMode() {
+                body.classList.remove("dark-mode")
+                localStorage.setItem("dark-mode", "disabled")
+            }
+            if(darkMode === "enabled") {
+                enableDarkMode()
+            }
+
+            darkModeBtn.click((e)=>{
+                e.preventDefault()
+                darkMode = localStorage.getItem("dark-mode")
+                if(darkMode === "disabled") {
+                    enableDarkMode()
+                    darkModeBtn.text("Light mode")
+                } else {
+                    disableDarkMode()
+                    darkModeBtn.text("Dark mode")
+                }
+            })
+        })
+     </script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
