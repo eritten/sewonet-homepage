@@ -91,7 +91,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
 "USER": "swonet",
 "PASSWORD": 'Serwornet1234$1234',
-        'NAME': "serwornet",
+        'NAME': "swonet$homepage",
 
 "HOST": "swonet.mysql.pythonanywhere-services.com",
 "OPTIONS": {
