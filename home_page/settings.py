@@ -89,7 +89,7 @@ import os
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': "serwornet",
+        'NAME': "swonet",
 "USER": "serwornet",
 "PASSWORD": "serwornet1234$1234",
 "HOST": "swonet.mysql.pythonanywhere-services.com",
