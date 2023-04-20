@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ["*"]
 
 SITE_ID = 1
 INSTALLED_APPS = [
-'admin',
+'users',
     'blog',
     'home',
     'taggit',
