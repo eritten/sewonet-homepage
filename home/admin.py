@@ -5,3 +5,5 @@ from .models import Project
 
 
 admin.site.register(Project)
+admin.site.site_title = "Serwornet admin dashboard"
+admin.site.site_header = "Serwornet admin dashboard"

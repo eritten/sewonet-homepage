@@ -11,7 +11,7 @@ maps = {"blog": BlogSitemap, "home": HomeSitemap}
 
 urlpatterns = [
 path('/language/', include('django.conf.urls.i18n')),
-path('admin/', admin.site.urls),
+path('ser_admin/', admin.site.urls),
 path('blog/', include('blog.urls')),
     path('sitemap.xml', sitemap, # new
         {'sitemaps': maps},
