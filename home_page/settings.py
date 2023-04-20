@@ -89,9 +89,10 @@ import os
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': "serwornet",
 "USER": "swonet",
-"PASSWORD": "serwornet1234$1234",
+"PASSWORD": 'Serwornet1234$1234',
+        'NAME': "serwornet",
+
 "HOST": "swonet.mysql.pythonanywhere-services.com",
 "OPTIONS": {
 "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
