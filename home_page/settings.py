@@ -23,8 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-#%wf%0n)a6_9_$xql-5r$9pf!kj7#lj015!)la^mcbby$91imw'
 TAGGIT_FORCE_LOWERCASE = True
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
+DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
@@ -89,16 +88,15 @@ import os
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-"USER": "swonet",
-"PASSWORD": 'Serwornet1234$1234',
-        'NAME': "swonet$homepage",
+#        'ENGINE': 'django.db.backends.sqlite3',
+#"USER": "swonet",
+#"PASSWORD": 'Serwornet1234$1234',
+#        'NAME': "swonet$homepage",
+#"HOST": "swonet.mysql.pythonanywhere-services.com",
+        'ENGINE': 'django.db.backends.sqlite3',
+"NAME": os.path.join(BASE_DIR, "serwornetdatabase.db")
 
-"HOST": "swonet.mysql.pythonanywhere-services.com",
-"OPTIONS": {
-"init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
-
-}
+ 
     }
 }
 
@@ -158,3 +156,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.serwornet.com'
+#EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "accountverification@serwornet.com"
+EMAIL_HOST_PASSWORD = "GyauEritten$1234$"
+
